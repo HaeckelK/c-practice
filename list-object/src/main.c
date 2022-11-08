@@ -92,6 +92,20 @@ void test_delete_length_decrement() {
     }
 }
 
+void test_delete(){
+    List *list = new_list();
+    append(list, 10);
+    append(list, 20);
+    append(list, 30);
+
+    delete(list, 1);
+    assert(*(list->items[0]) == 10);
+    assert(*(list->items[1]) == 30);
+
+    delete(list, 0);
+    assert(*(list->items[0]) == 30);
+}
+
 int main()
 {
     printf("Example of using List\n");
