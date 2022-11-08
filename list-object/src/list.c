@@ -102,3 +102,9 @@ void clear(List *list) {
     }
     list->length = 0;
 }
+
+void delete_list(List *list) {
+    // I haven't done anything with length and capacity because they weren't made with malloc?
+    clear(list);
+    free(list);
+}

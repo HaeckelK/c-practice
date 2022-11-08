@@ -43,6 +43,16 @@ void test_append_values() {
     }
 }
 
+void test_delete(){
+    List *list = new_list();
+    append(list, 1);
+    append(list, 2);
+    append(list, 3);
+
+    delete_list(list);
+    // TODO what to asser?
+}
+
 int main()
 {
     printf("Example of using List\n");
@@ -50,6 +60,7 @@ int main()
     test_init_values();
     test_append_length_increment();
     test_append_values();
+    test_delete();
 
     List *list = new_list();
 
