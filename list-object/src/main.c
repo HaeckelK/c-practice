@@ -27,9 +27,21 @@ void test_append_length_increment(){
     }
 }
 
-// void test_append() {
-//     List *list = 
-// }
+void test_append_values() {
+    List *list = new_list();
+
+    int target[] = {1,7,100};
+
+    append(list, 1);
+    append(list, 7);
+    append(list, 100);
+
+    for (int i = 0; i < 3; i++) {
+        // Relying on internal structure otherwise we'd be testing get as well
+        int *item = list->items[i];
+        assert(*item == target[i]);
+    }
+}
 
 int main()
 {
@@ -37,6 +49,7 @@ int main()
 
     test_init_values();
     test_append_length_increment();
+    test_append_values();
 
     List *list = new_list();
 
