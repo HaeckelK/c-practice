@@ -4,6 +4,7 @@
 #include "list.h"
 
 void print_list(List *list) {
+    printf("Printing List\n");
     for (int i = 0; i < list->length; i++)
     {
         int *value = get(list, i);
@@ -41,6 +42,9 @@ int main()
 
     append(list, 123);
 
+    print_list(list);
+
+    clear(list);
     print_list(list);
 
     return 0;

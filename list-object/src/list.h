@@ -19,4 +19,6 @@ void delete(List *list, int index);
 
 void reverse(List *list);
 
+void clear(List *list);
+
 #endif

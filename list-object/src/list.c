@@ -94,3 +94,11 @@ void delete(List *list, int index) {
     // see it again as we're reducing the length
     list->length--;
 }
+
+void clear(List *list) {
+    for (int i = 0; i < list->length - 1; i++) {
+        free(list->items[i]);
+        list->items[i] = NULL;// Is this needed?
+    }
+    list->length = 0;
+}
