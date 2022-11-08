@@ -3,7 +3,8 @@
 
 #include "list.h"
 
-List *new_list() {
+List *new_list()
+{
     // dummy defualt capacity for now
     const int DEFAULT_CAPACITY = 3;
     List *list = malloc(sizeof(List));
@@ -21,9 +22,11 @@ List *new_list() {
     return list;
 }
 
-void append(List *list, int value) {
+void append(List *list, int value)
+{
     // TODO implement resize
-    if (list->length >= list->capacity) {
+    if (list->length >= list->capacity)
+    {
         printf("List full!\n");
         exit(1);
     }
@@ -36,12 +39,14 @@ void append(List *list, int value) {
 
     *store = value;
     list->items[list->length] = store;
-    list->length++;   
+    list->length++;
 }
 
-int *get(List *list, int index) {
-    if (index < 0 || index >= list->length) {
-        printf("List index out of range(0:%d): %d\n", list->length-1, index);
+int *get(List *list, int index)
+{
+    if (index < 0 || index >= list->length)
+    {
+        printf("List index out of range(0:%d): %d\n", list->length - 1, index);
         exit(1);
     }
     return list->items[index];
