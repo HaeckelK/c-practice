@@ -4,5 +4,8 @@
 
 int main() {
     printf("Example of using List\n");
+
+    List *list = new_list();
+
     return 0;
 }
