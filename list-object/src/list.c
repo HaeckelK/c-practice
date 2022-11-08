@@ -40,8 +40,7 @@ void reverse(List *list)
     list->items = new->items;
     new->items = tmp_items;
 
-    // TODO use a proper delete function
-    free(new);
+    delete_list(new);
 }
 
 List *new_list()
