@@ -43,7 +43,7 @@ void test_append_values() {
     }
 }
 
-void test_delete(){
+void test_delete_list(){
     List *list = new_list();
     append(list, 1);
     append(list, 2);
@@ -53,6 +53,23 @@ void test_delete(){
     // TODO what to asser?
 }
 
+void test_clear(){
+    List *list = new_list();
+    append(list, 1);
+    append(list, 2);
+
+    int length = list->length;
+
+    clear(list);
+
+    assert(list->length == 0);
+
+    for (int i = 0; i <= length - 1; i++){
+        assert(list->items[i] == NULL);
+    }
+
+}
+
 int main()
 {
     printf("Example of using List\n");
@@ -60,7 +77,8 @@ int main()
     test_init_values();
     test_append_length_increment();
     test_append_values();
-    test_delete();
+    test_delete_list();
+    test_clear();
 
     List *list = new_list();
 

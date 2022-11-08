@@ -96,7 +96,7 @@ void delete(List *list, int index) {
 }
 
 void clear(List *list) {
-    for (int i = 0; i < list->length - 1; i++) {
+    for (int i = 0; i <= list->length - 1; i++) {
         free(list->items[i]);
         list->items[i] = NULL;// Is this needed?
     }
