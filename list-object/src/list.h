@@ -10,4 +10,6 @@ typedef struct
 
 List *new_list();
 
+void append(List *list, int value);
+
 #endif
