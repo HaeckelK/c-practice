@@ -7,15 +7,17 @@ int main() {
 
     List *list = new_list();
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 3; i++) {
         append(list, i * i);
     }
 
-    for (int i = 0; i < list->capacity; i++) {
-        int *value = list->items[i];
-        if (value == NULL) {
-            continue;
-        }
+    // TODO this also works but I can't help but feel I'm misunderstanding proper 
+    // pointer use
+    int *element = get(list, 10);
+    *element = 100;
+
+    for (int i = 0; i < list->length; i++) {
+        int *value = get(list, i);
         printf("%d: %d\n", i, *value);
     }
 

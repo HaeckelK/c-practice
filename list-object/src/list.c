@@ -38,3 +38,11 @@ void append(List *list, int value) {
     list->items[list->length] = store;
     list->length++;   
 }
+
+int *get(List *list, int index) {
+    if (index < 0 || index >= list->length) {
+        printf("List index out of range(0:%d): %d\n", list->length-1, index);
+        exit(1);
+    }
+    return list->items[index];
+}
