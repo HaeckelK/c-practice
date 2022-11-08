@@ -12,9 +12,31 @@ void print_list(List *list) {
     }
 }
 
+void test_init_values() {
+    List *list = new_list();
+    assert(list->length == 0);
+}
+
+// Show that length increments on each added item
+void test_append_length_increment(){
+    List *list = new_list();
+    // TODO this is constrained by capacity size
+    for (int i = 0; i < 3; i++){
+        append(list, 0);
+        assert(list->length == i + 1);
+    }
+}
+
+// void test_append() {
+//     List *list = 
+// }
+
 int main()
 {
     printf("Example of using List\n");
+
+    test_init_values();
+    test_append_length_increment();
 
     List *list = new_list();
 
