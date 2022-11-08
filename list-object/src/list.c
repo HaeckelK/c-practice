@@ -3,25 +3,6 @@
 
 #include "list.h"
 
-List *new_list()
-{
-    // dummy defualt capacity for now
-    const int DEFAULT_CAPACITY = 3;
-    List *list = malloc(sizeof(List));
-    // TODO error handling on malloc
-    // TODO free on delete
-
-    int **items = malloc(DEFAULT_CAPACITY * sizeof(int));
-
-    // TODO error handling on malloc
-    // TODO free on delete
-
-    list->length = 0;
-    list->capacity = DEFAULT_CAPACITY;
-    list->items = items;
-    return list;
-}
-
 void append(List *list, int value)
 {
     // TODO implement resize
@@ -40,6 +21,50 @@ void append(List *list, int value)
     *store = value;
     list->items[list->length] = store;
     list->length++;
+}
+
+// Reverse list in place
+void reverse(List *list)
+{
+    List *new = new_list();
+    // TODO need to resize as who knows how long *list is?
+    for (int i = list->length - 1; i >= 0; i--)
+    {
+        // Also not sure this is right
+        int *item = list->items[i];
+        append(new, *item);
+    }
+
+    // Also want to check this
+    const int tmp_length = list->length;
+    list->length = new->length;
+    new->length = tmp_length;
+
+    int **tmp_items = list->items;
+    list->items = new->items;
+    new->items = tmp_items;
+
+    // TODO use a proper delete function
+    free(new); 
+}
+
+List *new_list()
+{
+    // dummy defualt capacity for now
+    const int DEFAULT_CAPACITY = 3;
+    List *list = malloc(sizeof(List));
+    // TODO error handling on malloc
+    // TODO free on delete
+
+    int **items = malloc(DEFAULT_CAPACITY * sizeof(int));
+
+    // TODO error handling on malloc
+    // TODO free on delete
+
+    list->length = 0;
+    list->capacity = DEFAULT_CAPACITY;
+    list->items = items;
+    return list;
 }
 
 int *get(List *list, int index)

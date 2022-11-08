@@ -15,8 +15,10 @@ int main()
 
     // TODO this also works but I can't help but feel I'm misunderstanding proper
     // pointer use
-    int *element = get(list, 10);
+    int *element = get(list, 1);
     *element = 100;
+
+    reverse(list);
 
     for (int i = 0; i < list->length; i++)
     {
