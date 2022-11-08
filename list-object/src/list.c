@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "list.h"
 
@@ -21,6 +22,12 @@ List *new_list() {
 }
 
 void append(List *list, int value) {
+    // TODO implement resize
+    if (list->length >= list->capacity) {
+        printf("List full!\n");
+        exit(1);
+    }
+
     // This gives the right output but I'm pretty sure it's garbage
     int *store = malloc(sizeof(int));
 
