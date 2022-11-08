@@ -106,6 +106,31 @@ void test_delete(){
     assert(*(list->items[0]) == 30);
 }
 
+void test_reverse_length() {
+    List *list = new_list();
+    append(list, 10);
+    append(list, 20);
+    append(list, 30);
+
+    int length = list->length;
+    reverse(list);
+    assert(list->length == length);
+}
+
+void test_reverse_values(){
+    List *list = new_list();
+    append(list, 10);
+    append(list, 20);
+    append(list, 30);
+
+    reverse(list);
+
+    assert(*get(list,0) == 30);
+    assert(*get(list,1) == 20);
+    assert(*get(list,2) == 10);
+}
+// TODO test doesn't show that the underlying pointers have been moved across
+
 int main()
 {
     printf("Example of using List\n");
@@ -116,6 +141,9 @@ int main()
     test_delete_list();
     test_clear();
     test_delete_length_decrement();
+    test_delete();
+    test_reverse_length();
+    test_reverse_values();
 
     return 0;
 }

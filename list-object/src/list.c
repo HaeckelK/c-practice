@@ -36,10 +36,6 @@ void reverse(List *list)
     }
 
     // Also want to check this
-    const int tmp_length = list->length;
-    list->length = new->length;
-    new->length = tmp_length;
-
     int **tmp_items = list->items;
     list->items = new->items;
     new->items = tmp_items;
