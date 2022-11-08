@@ -78,6 +78,20 @@ void test_clear()
     }
 }
 
+void test_delete_length_decrement() {
+    List *list = new_list();
+    append(list, 10);
+    append(list, 20);
+    append(list, 30);
+
+    int length = list->length;
+
+    for (int i = 0; i < 3; i++) {
+        delete(list, 0);
+        assert(list->length == length - i - 1);
+    }
+}
+
 int main()
 {
     printf("Example of using List\n");
@@ -87,37 +101,7 @@ int main()
     test_append_values();
     test_delete_list();
     test_clear();
-
-    List *list = new_list();
-
-    int initial_range = 3;
-
-    for (int i = 0; i < initial_range; i++)
-    {
-        append(list, i * i);
-    }
-    assert(list->length == initial_range);
-
-    // TODO this also works but I can't help but feel I'm misunderstanding proper
-    // pointer use
-    int *element = get(list, 1);
-    *element = 100;
-
-    print_list(list);
-    reverse(list);
-    print_list(list);
-
-    delete (list, 0);
-
-    // TODO assert here on length and capacity
-    assert(list->length == 2);
-
-    append(list, 123);
-
-    print_list(list);
-
-    clear(list);
-    print_list(list);
+    test_delete_length_decrement();
 
     return 0;
 }
