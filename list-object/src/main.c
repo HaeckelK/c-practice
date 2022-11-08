@@ -3,7 +3,8 @@
 
 #include "list.h"
 
-void print_list(List *list) {
+void print_list(List *list)
+{
     printf("Printing List\n");
     for (int i = 0; i < list->length; i++)
     {
@@ -12,38 +13,44 @@ void print_list(List *list) {
     }
 }
 
-void test_init_values() {
+void test_init_values()
+{
     List *list = new_list();
     assert(list->length == 0);
 }
 
 // Show that length increments on each added item
-void test_append_length_increment(){
+void test_append_length_increment()
+{
     List *list = new_list();
     // TODO this is constrained by capacity size
-    for (int i = 0; i < 3; i++){
+    for (int i = 0; i < 3; i++)
+    {
         append(list, 0);
         assert(list->length == i + 1);
     }
 }
 
-void test_append_values() {
+void test_append_values()
+{
     List *list = new_list();
 
-    int target[] = {1,7,100};
+    int target[] = {1, 7, 100};
 
     append(list, 1);
     append(list, 7);
     append(list, 100);
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++)
+    {
         // Relying on internal structure otherwise we'd be testing get as well
         int *item = list->items[i];
         assert(*item == target[i]);
     }
 }
 
-void test_delete_list(){
+void test_delete_list()
+{
     List *list = new_list();
     append(list, 1);
     append(list, 2);
@@ -53,7 +60,8 @@ void test_delete_list(){
     // TODO what to asser?
 }
 
-void test_clear(){
+void test_clear()
+{
     List *list = new_list();
     append(list, 1);
     append(list, 2);
@@ -64,10 +72,10 @@ void test_clear(){
 
     assert(list->length == 0);
 
-    for (int i = 0; i <= length - 1; i++){
+    for (int i = 0; i <= length - 1; i++)
+    {
         assert(list->items[i] == NULL);
     }
-
 }
 
 int main()
@@ -99,7 +107,7 @@ int main()
     reverse(list);
     print_list(list);
 
-    delete(list, 0);
+    delete (list, 0);
 
     // TODO assert here on length and capacity
     assert(list->length == 2);

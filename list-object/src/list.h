@@ -16,7 +16,7 @@ void append(List *list, int value);
 int *get(List *list, int index);
 
 // TODO rename to delete_item?
-void delete(List *list, int index);
+void delete (List *list, int index);
 
 void reverse(List *list);
 

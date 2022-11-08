@@ -45,7 +45,7 @@ void reverse(List *list)
     new->items = tmp_items;
 
     // TODO use a proper delete function
-    free(new); 
+    free(new);
 }
 
 List *new_list()
@@ -77,7 +77,8 @@ int *get(List *list, int index)
     return list->items[index];
 }
 
-void delete(List *list, int index) {
+void delete (List *list, int index)
+{
     // TODO DRY
     if (index < 0 || index >= list->length)
     {
@@ -87,7 +88,8 @@ void delete(List *list, int index) {
     // TODO at some point you might want to downsize
 
     // We `delete` the element by just shunting everying else down one
-    for (int i = index; i < list->length - 1; i++) {
+    for (int i = index; i < list->length - 1; i++)
+    {
         list->items[i] = list->items[i + 1];
     }
     // So technically the final element is still floating around, but we won't
@@ -95,15 +97,18 @@ void delete(List *list, int index) {
     list->length--;
 }
 
-void clear(List *list) {
-    for (int i = 0; i <= list->length - 1; i++) {
+void clear(List *list)
+{
+    for (int i = 0; i <= list->length - 1; i++)
+    {
         free(list->items[i]);
-        list->items[i] = NULL;// Is this needed?
+        list->items[i] = NULL; // Is this needed?
     }
     list->length = 0;
 }
 
-void delete_list(List *list) {
+void delete_list(List *list)
+{
     // I haven't done anything with length and capacity because they weren't made with malloc?
     clear(list);
     free(list);
