@@ -15,6 +15,8 @@ void append(List *list, int value);
 // TODO should this be a pointer? I think yes because how else can I edit the item?
 int *get(List *list, int index);
 
+void delete(List *list, int index);
+
 void reverse(List *list);
 
 #endif

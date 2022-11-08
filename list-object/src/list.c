@@ -76,3 +76,21 @@ int *get(List *list, int index)
     }
     return list->items[index];
 }
+
+void delete(List *list, int index) {
+    // TODO DRY
+    if (index < 0 || index >= list->length)
+    {
+        printf("List index out of range(0:%d): %d\n", list->length - 1, index);
+        exit(1);
+    }
+    // TODO at some point you might want to downsize
+
+    // We `delete` the element by just shunting everying else down one
+    for (int i = index; i < list->length - 1; i++) {
+        list->items[i] = list->items[i + 1];
+    }
+    // So technically the final element is still floating around, but we won't
+    // see it again as we're reducing the length
+    list->length--;
+}
