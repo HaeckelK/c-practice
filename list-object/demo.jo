@@ -1,0 +1,4 @@
+declare List x; // initialises an empty list
+x.add(10);  // add element to list
+x.add(20);
+x.add(30);
