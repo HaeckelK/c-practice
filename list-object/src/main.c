@@ -131,6 +131,36 @@ void test_reverse_values(){
 }
 // TODO test doesn't show that the underlying pointers have been moved across
 
+void test_get_index_success(){
+    List *list = new_list();
+    append(list, 10);
+    append(list, 20);
+    append(list, 30);
+
+    int index = get_index(list, 20);
+    assert(index == 1); 
+}
+
+void test_get_index_first_match(){
+    List *list = new_list();
+    append(list, 10);
+    append(list, 20);
+    append(list, 20);
+
+    int index = get_index(list, 20);
+    assert(index == 1); 
+}
+
+void test_get_index_fail(){
+    List *list = new_list();
+    append(list, 10);
+    append(list, 20);
+    append(list, 30);
+
+    int index = get_index(list, 100);
+    assert(index == -1); 
+}
+
 int main()
 {
     printf("Example of using List\n");
@@ -144,6 +174,9 @@ int main()
     test_delete();
     test_reverse_length();
     test_reverse_values();
+    test_get_index_success();
+    test_get_index_first_match();
+    test_get_index_fail();    
 
     return 0;
 }

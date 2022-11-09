@@ -72,6 +72,17 @@ int *get(List *list, int index)
     return list->items[index];
 }
 
+// Return index of first matching item in List
+// -1 returned if not found
+int get_index(List *list, int value) {
+    for (int i = 0; i < list->length; i++){
+        if (*(list->items[i]) == value) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 void delete (List *list, int index)
 {
     // TODO DRY
