@@ -161,6 +161,26 @@ void test_get_index_fail(){
     assert(index == -1); 
 }
 
+void test_resize_capacity() {
+    List *list = new_list();
+    int original_capacity = list->capacity;
+    for (int i = 0; i < original_capacity + 1; i++) {
+        append(list, i * i);
+    }
+    assert(list->capacity==original_capacity*2);
+}
+
+void test_resize_elements() {
+    List *list = new_list();
+    int original_capacity = list->capacity;
+    for (int i = 0; i < original_capacity + 1; i++) {
+        append(list, i * i);
+    }
+    for (int i = 0; i < list->length; i++) {
+        assert((*list->items[i])==i*i);
+    }
+}
+
 int main()
 {
     printf("Example of using List\n");
@@ -176,7 +196,9 @@ int main()
     test_reverse_values();
     test_get_index_success();
     test_get_index_first_match();
-    test_get_index_fail();    
+    test_get_index_fail();
+    test_resize_capacity();
+    test_resize_elements();
 
     return 0;
 }
