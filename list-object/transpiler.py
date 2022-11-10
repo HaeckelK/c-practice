@@ -29,11 +29,16 @@ for line in lines:
         transpiled = f"append({matches[0][0]}, {matches[0][1]});"
     elif matches:=re.findall(r"([\w]+).add\((\d+)\)", line):
         transpiled = f"append({matches[0][0]}, {matches[0][1]});"
+    elif matches:=re.findall(r"len\(([\w]+)\);", line):
+        transpiled = f"length_of({matches[0][0]});"
     
     if transpiled:
         content.append(transpiled)
 
 output = output.replace("CONTENT", "\n    ".join(content))
+
+for line in output.splitlines():
+    print(line)
 
 with open("x.c", "w") as f:
     f.write(output)

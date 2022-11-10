@@ -27,4 +27,7 @@ void reverse(List *list);
 void delete_list(List *list);
 void clear(List *list);
 
+// TODO dont like name, but was getting conflicts when just called `length`
+int length_of(List *list);
+
 #endif

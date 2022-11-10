@@ -133,3 +133,9 @@ void delete_list(List *list)
     clear(list);
     free(list);
 }
+
+int length_of(List *list) {
+    // Doing this because I want to end up with a copy of the length not a pointer or something
+    // to list->length.
+    return list->length;
+}

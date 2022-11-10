@@ -181,6 +181,20 @@ void test_resize_elements() {
     }
 }
 
+void test_length() {
+    List *list = new_list();
+
+    for (int i = 0; i < 5; i++) {
+        append(list, i);
+    }
+    int length;
+    length = length_of(list);
+    // THEN length correctly extracted
+    assert(length==5);
+    // THEN length is a copy of underlying member, not the actual member itself
+    assert(&length!=&(list->length));
+}
+
 int main()
 {
     printf("Example of using List\n");
@@ -199,6 +213,7 @@ int main()
     test_get_index_fail();
     test_resize_capacity();
     test_resize_elements();
+    test_length();
 
     return 0;
 }
